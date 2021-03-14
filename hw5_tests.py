@@ -43,7 +43,7 @@ class TestCard(unittest.TestCase):
         '''
         c1 = hw5_cards.Card(0,12)
         self.assertEqual(c1.rank_name, "Queen")
-        return c1.rank, c1.rank_name
+        return c1.rank_name, c1.rank_name
     
     def test_q2(self):
         '''
@@ -59,7 +59,7 @@ class TestCard(unittest.TestCase):
         '''
         c2 = hw5_cards.Card(1,1)
         self.assertEqual(c2.suit_name, "Clubs")
-        return c2.suit, c2.suit_name  
+        return c2.suit_name, c2.suit_name  
     
 
     def test_q3(self):
@@ -77,7 +77,7 @@ class TestCard(unittest.TestCase):
         '''
         c3 = hw5_cards.Card(3,13)
         self.assertEqual(c3.__str__(), "King of Spades")
-        return c3.suit_name, c3.rank_name
+        return c3.__str__(), c3.__str__()
     
     def test_q4(self):
         '''
@@ -93,7 +93,7 @@ class TestCard(unittest.TestCase):
         '''
         c4 = hw5_cards.Deck()
         self.assertEqual(len(c4.cards), 52)
-        return len(c4.cards)
+        return len(c4.cards), len(c4.cards)
 
     def test_q5(self):
         '''
@@ -108,8 +108,10 @@ class TestCard(unittest.TestCase):
 
         '''
         c5 = hw5_cards.Deck()
-        self.assertIsInstance(c5.deal_card(), hw5_cards.Card)
-        return type(c5.deal_card()), type(hw5_cards.Card)
+        c5_1 = hw5_cards.Card()
+        self.assertIsInstance(c5.deal_card(), type(c5_1))
+        c5 = c5.deal_card()
+        return c5, c5
     
     def test_q6(self):
         '''
@@ -128,7 +130,7 @@ class TestCard(unittest.TestCase):
         c6_1 = hw5_cards.Deck()
         c6_1.deal_card()
         self.assertEqual(len(c6.cards) - len(c6_1.cards), 1)
-        return len(c6.cards), len(c6_1.cards)
+        return len(c6_1.cards), len(c6_1.cards)
     
 
     def test_q7(self):
@@ -150,7 +152,7 @@ class TestCard(unittest.TestCase):
         c7.replace_card(c7.cards)
         c7_replaced = len(c7.cards)
         self.assertEqual(c7_dealt - c7_replaced, -1)
-        return c7_dealt, c7_replaced
+        return c7_replaced, c7_replaced, c7_replaced
     
     def test_q8(self):
         '''
